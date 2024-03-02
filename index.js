@@ -13,13 +13,22 @@ const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
 
-addButtonEl.addEventListener("click", function() {
-    let inputValue = inputFieldEl.value
-    
+addButtonEl.addEventListener("click", function () {
+  let inputValue = inputFieldEl.value.trim(); // Get and trim input value
+
+  if (inputValue) {
     push(shoppingListInDB, inputValue)
-    
-    clearInputFieldEl()
-})
+      .then(() => {
+        clearInputFieldEl();
+      })
+      .catch((error) => {
+        console.error("Error adding item to shopping list:", error);
+      });
+  } else {
+    alert("Please enter a shopping item!"); // Prompt user if empty
+  }
+});
+
 
 onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
