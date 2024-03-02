@@ -6,7 +6,6 @@ body {
   background-color: #eef0f4;
   color: #432000;
   user-select: none;
-  pointer-events: none;
 }
 
 .container {
@@ -19,6 +18,7 @@ body {
 img {
   width: 250px;
   margin: 0 auto;
+  pointer-events: none;
 }
 
 input {
